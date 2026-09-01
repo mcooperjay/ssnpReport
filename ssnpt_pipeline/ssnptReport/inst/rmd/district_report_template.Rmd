@@ -1,0 +1,56 @@
+---
+title: "SSNPT-R District Report"
+output: word_document
+params:
+  district_code: NA
+  n: NA
+  suppressed: NA
+  comparison: NA
+  min_n: NA
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+# SSNPT-R Results: District `r params$district_code`
+
+Number of respondents from this district: **`r params$n`**
+
+```{r results = "asis"}
+if (isTRUE(params$suppressed)) {
+  cat(paste0(
+    "**District-level results are not shown.** ",
+    "This district had fewer than the minimum of ", params$min_n,
+    " respondents required to report averages without risking the ",
+    "identifiability of individual responses. This threshold protects ",
+    "respondent confidentiality as described in the informed consent."
+  ))
+} else {
+  cat("The table below compares this district's average scores to the national average across all participating districts, for each of the 8 SSNPT-R subscales (4 dimensions, each rated for how often the practice occurs and how important it is felt to be).")
+}
+```
+
+```{r}
+if (!isTRUE(params$suppressed)) {
+  tbl <- params$comparison
+  tbl$District_Mean <- round(tbl$District_Mean, 2)
+  tbl$National_Mean <- round(tbl$National_Mean, 2)
+  tbl$National_SD <- round(tbl$National_SD, 2)
+  tbl <- tbl[, c("Subscale", "District_Mean", "National_Mean", "National_SD", "National_N")]
+
+  flextable::flextable(tbl) |>
+    flextable::set_header_labels(
+      Subscale = "Subscale",
+      District_Mean = "District Mean",
+      National_Mean = "National Mean",
+      National_SD = "National SD",
+      National_N = "National N"
+    ) |>
+    flextable::autofit()
+}
+```
+
+```{r results = "asis"}
+cat("\n\n*Scale range for all subscales: 1-6. Practice subscales reflect how often the behavior occurs (1 = Never, 6 = Always). Importance subscales reflect how important the respondent feels the behavior is (1 = Not at all important, 6 = Absolutely imperative).*")
+```

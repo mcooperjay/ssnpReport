@@ -1,0 +1,6 @@
+export(compute_subscale_scores)
+export(compute_national_benchmarks)
+export(compute_district_summary)
+export(generate_district_report)
+export(generate_all_district_reports)
+import(dplyr)
