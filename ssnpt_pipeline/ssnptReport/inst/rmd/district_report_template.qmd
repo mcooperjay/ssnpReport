@@ -1,6 +1,6 @@
 ---
 title: "SSNPT-R District Report"
-output: word_document
+output: pdf
 params:
   district_code: NA
   n: NA
@@ -27,7 +27,7 @@ if (isTRUE(params$suppressed)) {
     "respondent confidentiality as described in the informed consent."
   ))
 } else {
-  cat("The table below compares this district's average scores to the national average across all participating districts, for each of the 8 SSNPT-R subscales (4 dimensions, each rated for how often the practice occurs and how important it is felt to be).")
+  cat("The table below compares this district's average scores to the overall average across all participating districts, for each of the 8 SSNPT-R subscales (4 dimensions, each rated for how often the practice occurs and how important it is felt to be).")
 }
 ```
 
@@ -35,17 +35,17 @@ if (isTRUE(params$suppressed)) {
 if (!isTRUE(params$suppressed)) {
   tbl <- params$comparison
   tbl$District_Mean <- round(tbl$District_Mean, 2)
-  tbl$National_Mean <- round(tbl$National_Mean, 2)
-  tbl$National_SD <- round(tbl$National_SD, 2)
-  tbl <- tbl[, c("Subscale", "District_Mean", "National_Mean", "National_SD", "National_N")]
+  tbl$Overall_Mean <- round(tbl$Overall_Mean, 2)
+  tbl$Overall_SD <- round(tbl$Overall_SD, 2)
+  tbl <- tbl[, c("Subscale", "District_Mean", "Overall_Mean", "Overall_SD", "Overall_N")]
 
   flextable::flextable(tbl) |>
     flextable::set_header_labels(
       Subscale = "Subscale",
       District_Mean = "District Mean",
-      National_Mean = "National Mean",
-      National_SD = "National SD",
-      National_N = "National N"
+      Overall_Mean = "Overall Mean",
+      Overall_SD = "Overall SD",
+      Overall_N = "Overall N"
     ) |>
     flextable::autofit()
 }

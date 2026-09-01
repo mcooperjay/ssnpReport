@@ -7,13 +7,13 @@
 #'
 #' @param df_scored Data frame already passed through compute_subscale_scores().
 #' @param district_code The district code to summarize (character).
-#' @param benchmarks Output of compute_national_benchmarks().
+#' @param benchmarks Output of compute_overall_benchmarks().
 #' @param min_n Minimum number of respondents required to report district
 #'   averages. Defaults to 5 -- CONFIRM this threshold with your professor/IRB
 #'   before relying on it; this default is a placeholder, not a validated rule.
 #' @param subscale_cols Character vector of subscale column names.
 #' @return A list with: district_code, n, suppressed (logical), and a data
-#'   frame `comparison` (Subscale, District_Mean, National_Mean, National_SD)
+#'   frame `comparison` (Subscale, District_Mean, Overall_Mean, Overall_SD)
 #'   when not suppressed, or NULL when suppressed.
 #' @export
 compute_district_summary <- function(df_scored, district_code, benchmarks,

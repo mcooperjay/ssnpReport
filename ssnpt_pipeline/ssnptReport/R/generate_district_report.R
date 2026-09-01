@@ -41,7 +41,7 @@ generate_district_report <- function(district_summary,
 
 #' Generate Word reports for every district in the data
 #'
-#' Convenience wrapper: computes national benchmarks, then loops over every
+#' Convenience wrapper: computes overall benchmarks, then loops over every
 #' unique DistrictCode in the data and writes one Word report per district
 #' (applying the minimum-n suppression rule automatically).
 #'
