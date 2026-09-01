@@ -281,9 +281,10 @@ generate_all_district_reports(
 * [x] SSNPT-R subscale scoring
 * [x] District-level summaries
 * [x] Overall sample benchmarks
-* [ ] Minimum-n suppression prototype
+* [x] Minimum-n suppression prototype
+* [x] Individual comparison calculation
+* [x] Quarto district report template
 * [ ] Individual comparison report
-* [ ] Finalize Quarto report template
 
 ### Next
 

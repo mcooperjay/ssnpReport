@@ -4,5 +4,5 @@ export(compute_district_summary)
 export(generate_district_report)
 export(generate_all_district_reports)
 export(generate_individual_report)
-
+export(compute_individual_comparison)
 import(dplyr)
